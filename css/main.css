@@ -1,0 +1,566 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+      /* use */
+      /* font-family: 'Sacramento', cursive; */
+/* Propiedades Globales */
+html{
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: "Open sans", sans-serif;
+}
+
+*, *::before, *::after{
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+/* Variables Colores */
+:root{
+  --c-principal: #FA3434;
+  --c-light: #FFADAD;
+  --c-medium: #FF6666;
+  --c-dark: #AF1111;
+  --c-font: #320000;
+  --c-white: #FFFFFF;
+}
+/* Main */
+.main{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 9fr;
+}
+/* CABECERA */
+#header{
+  width: 100%;
+  background-color: var(--c-principal);
+  grid-column: 1;
+  grid-row: 1;
+}
+.nav{
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  position: relative;
+}
+.logo{
+  grid-column: 1/2;
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 15px;
+}
+.logo img{
+  height: 60px;
+}
+.logo span{
+  font-family: 'Sacramento', cursive;
+  font-size: 3.2rem;
+  color: var(--c-white);
+}
+.menu{
+  grid-column: 1/3;
+  grid-row: 2;
+  display: none;
+  background-color: var(--c-principal);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.menu.active{
+  display: block;
+  z-index: 2;
+}
+.menu ul li{
+  list-style: none;
+  text-align: center;
+}
+.menu a{
+  display: block;
+  padding: 15px 0;
+  width: 100%;
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: var(--c-white);
+  border-bottom: 1px solid var(--c-white);
+}
+.menu a:first-child{
+  border-top: 1px solid #fff;
+}
+.menu a:last-child{
+  border-bottom: none;
+}
+.menu a:active{
+  background-color: var(--c-white);
+  color: var(--c-font);
+}
+.btn-menu{
+  grid-column: 2/3;
+  justify-self: center;
+  font-size: 3.6rem;
+  color: #fff;
+  padding-right: 15px;
+}
+.btn-menu i{
+  transition: all .5s ease;
+}
+.btn-menu i.rotate{
+  transform: rotate(90deg);
+  color: #AF1111;
+}
+/* BLOQUE INICIO */
+#inicio{
+  width: 100%;
+  grid-column: 1;
+  grid-row: 2;
+  background: url("../img/mirador.jpg") no-repeat top center;
+  background-size: cover;
+}
+.contenedor-inicio{
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.descripcion{
+  flex: 1 1 30%;
+  text-align: center;
+  background: url("../img/wave-main.svg") no-repeat top; 
+  background-size:cover;
+  color: var(--c-white);
+  padding: 0 15px 15px 15px;
+}
+.descripcion h1{
+  font-size: 3.6rem;
+  margin: 0;
+  padding: 15px 0;
+}
+.descripcion p{
+  font-size: 1.6rem;
+}
+.descripcion p:last-child{
+  margin-top: 15px;
+  font-weight: bold;
+}
+.reservas{
+  flex: 1 1 70%;
+  margin: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--c-white);
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.reservas::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  transform:skewX(345deg);
+}
+.reservas label{
+  display: block;
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding-bottom: 8px;
+  color: var(--c-font);
+}
+.reservas form{
+  position: relative;
+}
+.reservas input[type="date"],
+.reservas input[type="number"]{
+  width: 100%;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  background-color: var(--c-light);
+  border: 1px solid var(--c-white);
+  border-radius: 5px;
+}
+.reservas input[type="submit"]{
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 10px 10px;
+  background: linear-gradient(90deg, #FC00FF 0%, #00DBDE 100%);
+  border: 1px solid var(--c-white);
+  border-radius: 5px;
+  color: var(--c-white);
+  font-weight: bold;
+  margin-top: 10px;
+  transition: all .5s ease;
+}
+.reservas input[type="submit"]:active{
+  background: linear-gradient(to right, #7f00ff, #e100ff);
+  color: var(--c-font);
+  border: none;
+}
+
+/* BLOQUE HABITACIONES */
+#habitaciones{
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.contenedor-habitaciones,
+.contenedor-descuentos{
+  padding: 0 15px;
+}
+.d-habitaciones,
+.d-descuentos{
+  text-align: center;
+  color: var(--c-font);
+  padding-bottom: 15px;
+}
+.d-habitaciones h2,
+.d-descuentos h2{
+  font-size: 2.0rem;
+  padding-bottom: 15px;
+}
+.d-habitaciones p,
+.d-descuentos p{
+  font-size: 1.6rem;
+}
+.tarjeta{
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 15px;
+  overflow: hidden;
+  z-index: 1;
+}
+.tarjeta.simple{
+  background: var(--c-medium);
+}
+.tarjeta.doble{
+  background: var(--c-principal);
+}
+.tarjeta.triple{
+  background: var(--c-dark);
+}
+.tarjeta.descuento{
+  background: linear-gradient(90deg, #FC00FF 0%, #00DBDE 100%);
+  margin-bottom: 0;
+}
+.tarjeta::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(193.05deg, rgba(255, 255, 255, 0.3) 6.14%, rgba(255, 255, 255, 0) 98.11%);
+  pointer-events: none;
+  transform: skewX(345deg);
+  z-index: 1;
+}
+.simple, .doble, .triple{
+  position: relative;
+  z-index: 3;
+}
+.d-tarjeta{
+  width: 100%;
+  padding-bottom: 10px;
+}
+.d-tarjeta img{
+  width: 100%;
+  border-radius: 15px;
+}
+.d-tarjeta p{
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--c-white);
+}
+.precio{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.precio span{
+  display: block;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.precio .desayuno{
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+.precio button{
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  background: linear-gradient(90deg, #DAE2F8 0%, #D6A4A4 100%);
+  border-radius: 5px;
+  padding: 8px 10px;
+}
+/* .precio button:hover{
+  background: linear-gradient(to right, #7f00ff, #e100ff);
+  color: var(--c-white);
+} */
+.moneda span{
+  color: var(--c-white);
+}
+
+/* BLOQUE DESCUENTOS */
+.d-descuentos .bxs-offer{
+  color: var(--c-principal);
+}
+.tarjeta.descuento .precio span{
+  text-decoration: line-through;
+}
+.b-descuento{
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.b-descuento p{
+  font-weight: bold;
+  color: var(--c-white);
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.b-descuento p i{
+  font-size: 2rem;
+}
+.b-descuento > div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+}
+.b-descuento > div .antes{
+  font-weight: bold;
+  text-decoration: line-through;
+}
+.b-descuento > div .ahora{
+  font-weight: bold;
+  color: var(--c-white);
+}
+.b-descuento > div .descuento{
+  font-size: 1.4rem;
+  color: var(--c-white);
+}
+.b-descuento > div .desayuno{
+  color: var(--c-white);
+}
+.b-descuento button{
+  align-self: center;
+  width: 50%;
+  font-weight: bold;
+  background: linear-gradient(90deg, #FF75C3 0%, #FFA647 20.31%, #FFE83F 40%, #9FFF5B 60%, #70E2FF 80%, #CD93FF 100%);
+  border: 1px solid var(--c-white);
+  border-radius: 5px;
+  padding: 10px 0;
+}
+.b-descuento button:active{
+  background: linear-gradient(to right, #7f00ff, #e100ff);
+  color: var(--c-white);
+  border: 1px solid transparent;
+}
+
+/* BLOQUE INSTALACIONES */
+#b-instalaciones {
+  padding: 0 15px;
+  margin: 35px 0;
+}
+.img-instalaciones {
+  height: 230px;
+  margin: 15px 0;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "patio restaurante restaurante"
+    "patio lobby bathroom";
+}
+.img{
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  /* filter: brightness(40%); */
+}
+.img > span {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--c-white);
+  opacity: 0.7;
+}
+.patio {
+  grid-area: patio;
+  background: url("../img/patio.jpg") center;
+  background-size: cover;
+}
+.restaurante {
+  grid-area: restaurante;
+  background: url("../img/restaurante.jpg") center;
+  background-size: cover;
+}
+.lobby {
+  grid-area: lobby;
+  background: url("../img/lobby.jpg") center;
+  background-size: cover;
+}
+.bathroom {
+  grid-area: bathroom;
+  background: url("../img/bathroom.jpg") center;
+  background-size: cover;
+}
+/* BLOQUE RESERVAS */
+#reservas {
+  background-color: var(--c-principal);
+  padding: 20px 15px;
+}
+#reservas > div{
+  color: var(--c-white);
+}
+.b-reservas {
+  min-height: auto;
+  text-align: center;
+  font-size: 1.6rem;
+}
+.b-reservas > div {
+  padding-top: 20px;
+}
+.b-reservas .icon{
+  font-size: 6rem;
+}
+.b-reservas .sub-titulo {
+font-weight: bold;
+padding-bottom: 5px;
+}
+.b-reservas .text {
+  font-weight: lighter;
+  font-size: 1.4rem;
+}
+
+/* BLOQUE ACERCA DE SUCRE */
+#acerca-sucre {
+  padding: 20px 15px;
+}
+.text-justify {
+  font-size: 1.6rem;
+  text-align: justify;
+  line-height: 2rem;
+  padding-bottom: 1.6rem;
+}
+.img-sucre {
+  height: 230px;
+  margin: 15px 0;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "img-1 img-2 img-2"
+    "img-1 img-3 img-4";
+}
+.img-1 {
+  grid-area: img-1;
+  background: url("../img/img-1.jpg") center;
+  background-size: cover;
+}
+.img-2 {
+  grid-area: img-2;
+  background: url("../img/img-2.jpg") center;
+  background-size: cover;
+}
+.img-3 {
+  grid-area: img-3;
+  background: url("../img/img-3.jpg") center;
+  background-size: cover;
+}
+.img-4 {
+  grid-area: img-4;
+  background: url("../img/img-4.jpg") center;
+  background-size: cover;
+}
+
+/* BLOQUE HOTAL LATINOS */
+#hostal-latinos {
+  padding: 20px 15px;
+}
+.b-hostal {
+  padding: 20px 0;
+}
+.b-hostal img{
+  width: 100%;
+}
+
+/* BLOQUE PIE DE PAGINA */
+#pie-pagina {
+  padding: 20px 15px;
+  background-color: var(--c-font);
+  color: var(--c-white);
+}
+#pie-pagina h2{
+  font-size: 1.6rem;
+  padding-bottom: 0.8rem;
+}
+.contacto {
+  font-size: 1.4rem;
+  line-height: 2.5rem;
+  padding-bottom: 20px;
+}
+.referencias {
+  text-align: center;
+}
+
+/* BOTON ARRIBA */
+.btn-up{
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  background: linear-gradient(90deg, #00F5A0 0%, #00D9F5 100%);;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--c-font);
+  cursor: pointer;
+}
+
+/* REDES SOCIALES */
+#redes-sociales {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.red {
+  flex: 1;
+  font-size: 2rem;
+}
+.facebook {
+  background-color: #3B5998;
+}
+.whatsapp {
+  background-color: #25D366;
+}
+.instagram {
+  background: linear-gradient(90deg, #833AB4 0%, #FD1D1D 50%, #FCB045 100%);
+}
+.booking {
+  background-color: #0C3B7C;
+}
+.red a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: var(--c-white);
+  text-decoration: none;
+}
